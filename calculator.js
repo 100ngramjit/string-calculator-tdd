@@ -4,7 +4,12 @@ function add(numbers) {
   let delimiter = /[,\n]/;
   if (numbers.startsWith("//")) {
     const delimiterEnd = numbers.indexOf("\n");
-    delimiter = numbers.substring(2, delimiterEnd);
+    const delimiterDef = numbers.substring(2, delimiterEnd);
+    if (delimiterDef.startsWith("[") && delimiterDef.endsWith("]")) {
+      delimiter = delimiterDef.slice(1, -1);
+    } else {
+      delimiter = delimiterDef;
+    }
     numbers = numbers.substring(delimiterEnd + 1);
   }
 
