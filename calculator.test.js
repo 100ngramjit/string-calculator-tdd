@@ -45,4 +45,9 @@ describe("String Calculator", () => {
   test("should handle delimiters of any length", () => {
     expect(add("//[***]\n1***2***3")).toBe(6);
   });
+
+  test("should ignore any numbers as delimiters before \n", () => {
+    expect(add("//123\n11232")).toBe(9);
+    expect(add("//123\n41231231235")).toBe(27);
+  });
 });

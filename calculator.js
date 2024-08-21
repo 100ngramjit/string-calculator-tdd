@@ -5,10 +5,11 @@ function add(numbers) {
   if (numbers.startsWith("//")) {
     const delimiterEnd = numbers.indexOf("\n");
     const delimiterDef = numbers.substring(2, delimiterEnd);
+
     if (delimiterDef.startsWith("[") && delimiterDef.endsWith("]")) {
       delimiter = delimiterDef.slice(1, -1);
     } else {
-      delimiter = delimiterDef;
+      delimiter = delimiterDef?.replace(/\d/g, "");
     }
     numbers = numbers.substring(delimiterEnd + 1);
   }
